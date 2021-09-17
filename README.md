@@ -51,10 +51,6 @@ Agora todas as vezes que "github" for digitado, o bot irá responder
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
-#trava: comando para debug
-
----------------------------------------------------------------------------------------------------------------------------------
-
 #musica: Realiza a pesquisa de uma música e manda um link para escuta-la e um outro para baixa-la
 <br>
 <br>
