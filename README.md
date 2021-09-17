@@ -101,5 +101,4 @@ Agora todas as vezes que "github" for digitado, o bot irá responder
 <img src = "https://user-images.githubusercontent.com/70926962/133821513-75b97796-f837-448c-b22c-e3c130c22d91.png">
 </p>
 
----------------------------------------------------------------------------------------------------------------------------------
 
