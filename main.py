@@ -278,9 +278,6 @@ async def on_message(bot):
                 j = i
             else:
                 j+=1
+    
+client.run('PRIVATE_CODE')
 
-
-
-#bot.run('NzUxMzk4ODg1MTc1NTkwOTMy.X1Igvg.qT135tu0skSrjhHGkA-2inH2pgg')    
-client.run('NzUxMzk4ODg1MTc1NTkwOTMy.X1Igvg.qT135tu0skSrjhHGkA-2inH2pgg')
-#bot.content.startswith('*') 
