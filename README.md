@@ -82,6 +82,7 @@ Agora todas as vezes que "github" for digitado, o bot irá responder
 <p align="center">
 <img src = "https://user-images.githubusercontent.com/70926962/133820474-586bc249-c5fc-4f50-afac-e0066d2f6da8.png">
 </p>
+
 ---------------------------------------------------------------------------------------------------------------------------------
 
 #segundograu: Realiza uma equação de segundo grau e plota o gráfico
