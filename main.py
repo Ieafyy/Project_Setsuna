@@ -14,9 +14,9 @@ import os
 import math
 from pycotacao import get_exchange_rates, CurrencyCodes
 
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-bot = commands.Bot(command_prefix='#')
+bot = commands.Bot(command_prefix='#') 
 client = discord.Client()
 comandos = [''] * 1000
 respostas = [''] * 1000
@@ -26,7 +26,11 @@ comando = ''
 text = ''
 url = ''
 
-navegador = webdriver.Firefox()
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+
+navegador = webdriver.Firefox() #navegador para o selenium
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 
 parametros ={
     'format': 'bestaudio/best',
@@ -38,6 +42,8 @@ parametros ={
     }],
     
 }
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 
 @client.event
 
@@ -58,27 +64,33 @@ async def on_message(bot):
         except ValueError:
             return False
 
-    
-    if bot.content.startswith('#ola'):
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+        
+    if bot.content.startswith('#ola'): #Diz ola e o nick do autor
         await bot.channel.send('Olá {}!'.format(client.get_user(bot.author.id)))
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
     
-    
-    if bot.content.startswith('#comando'): 
+    if bot.content.startswith('#comando'): #Define novo comando
         await bot.channel.send('Como será chamado o comando?')
         comandos[i] = await client.wait_for('message')
         await bot.channel.send('Qual será minha resposta?')
         respostas[i] = await client.wait_for('message')
         await bot.channel.send('Ok!')
         i+=1
- 
-    elif bot.content.startswith('#sorteio'):
+        
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+
+    elif bot.content.startswith('#sorteio'): #Realiza sorteio
         await bot.channel.send('Escolha até que numero irá ser sorteado')
         esc1 = await client.wait_for('message')
         fim = int(esc1.content)
         num = random.randrange(1,fim)
         await bot.channel.send(num)
+        
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 
-    elif bot.content.startswith('#trava'):
+    elif bot.content.startswith('#trava'): #Debug
         await bot.channel.send('Digite um nome de um pokemon')
         poke = await client.wait_for('message')
         poke2 = ('{0.content}'.format(poke))
@@ -91,9 +103,10 @@ async def on_message(bot):
         with open ('pokemon.png','wb') as file:
             file.write(navegador.find_element_by_xpath('/html/body/main/div[3]/div[2]/div/div[1]/div[1]/p[1]/a/img').screenshot_as_png)
         await bot.channel.send(file=discord.File('pokemon.png'))
+        
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-    elif bot.content.startswith('#musica '):
+    elif bot.content.startswith('#musica '): #Pesquisa música
         pesq = str(bot.content)
         print(pesq)
         pesq = pesq[8:]
@@ -102,9 +115,11 @@ async def on_message(bot):
         musica.click()
         await bot.channel.send(navegador.current_url)
         await bot.channel.send('Download: https://www.snappea.com/pt/videoInfo?key={}'.format(navegador.current_url))   
+        
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-    elif bot.content.startswith('#pokemon'):
+    elif bot.content.startswith('#pokemon'): #Pesquisa pokemon (nome/numero)
         await bot.channel.send('Digite um nome de um pokemon')
         poke = await client.wait_for('message')
         poke2 = ('{0.content}'.format(poke))
@@ -115,12 +130,14 @@ async def on_message(bot):
             file.write(navegador.find_element_by_xpath('/html/body/main/div[3]/div[2]/div/div[1]/div[1]/p[1]/a/img').screenshot_as_png)
         await bot.channel.send(file=discord.File('pokemon.png'))
 
-    elif bot.content.startswith('mareep'):
+#-------------------------------------------------------------------------------------------------------------------------------------------------        
+        
+    elif bot.content.startswith('mareep'): #Responde com emoji de ovelha
          await bot.channel.send('🐑')
          
-        
+#-------------------------------------------------------------------------------------------------------------------------------------------------        
             
-    elif bot.content.startswith('#pokedolar'):
+    elif bot.content.startswith('#pokedolar'): #Cotação do Dólar e pokemon correspondente
         valorpd = str(get_exchange_rates(CurrencyCodes.USD))
         valorpd = valorpd[42:46]
         print(valorpd)
@@ -135,8 +152,9 @@ async def on_message(bot):
         namefpd = namepd.get_attribute('innerHTML')
         await bot.channel.send('O dolar está: {} referente ao pokemon: {}'.format(valorpd, namefpd))
 
-
-    elif bot.content.startswith('#pokeeuro'):
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+        
+    elif bot.content.startswith('#pokeeuro'): #Cotação do Euro e pokemon correspondente
         valorpe = str(get_exchange_rates(CurrencyCodes.EUR))
         valorpe = valorpe[42:46]
         linkpe = 'https://pokemondb.net/pokedex/'
@@ -149,8 +167,10 @@ async def on_message(bot):
         namepe = navegador.find_element_by_xpath('/html/body/main/h1')
         namefpe = namepe.get_attribute('innerHTML')
         await bot.channel.send('O euro está: {} referente ao pokemon: {}'.format(valorpe, namefpe))
+        
+#-------------------------------------------------------------------------------------------------------------------------------------------------  
 
-    elif bot.content.startswith('#pokelibra'):
+    elif bot.content.startswith('#pokelibra'): #Cotação da Libra e pokemon correspondente
         valorpl = str(get_exchange_rates(CurrencyCodes.GBP))
         linkpl = 'https://pokemondb.net/pokedex/'
         pokedexpl = valorpl[0] + valorpl[2] + valorpl[3]
@@ -163,8 +183,9 @@ async def on_message(bot):
         namefpl = namepl.get_attribute('innerHTML')
         await bot.channel.send('A libra está: {} referente ao pokemon: {}'.format(valorpl, namefpl))
         
+#-------------------------------------------------------------------------------------------------------------------------------------------------        
 
-    elif bot.content.startswith('#segundograu'):
+    elif bot.content.startswith('#segundograu'): #Função do segundo grau
         await bot.channel.send('Digite o valor de A')
         a1 = await client.wait_for('message')
         a = float(a1.content)
@@ -231,9 +252,11 @@ async def on_message(bot):
            
         await bot.channel.send(file=discord.File('graf.png'))
         
+  
+#-------------------------------------------------------------------------------------------------------------------------------------------------
         
         
-    elif bot.content.startswith('#primeirograu'):
+    elif bot.content.startswith('#primeirograu'): #Função do primeiro grau
         await bot.channel.send('Digite o valor de A')
         a1 = await client.wait_for('message')
         a = float(a1.content)
@@ -278,6 +301,8 @@ async def on_message(bot):
                 j = i
             else:
                 j+=1
+                
+#-------------------------------------------------------------------------------------------------------------------------------------------------
     
 client.run('PRIVATE_CODE')
 
