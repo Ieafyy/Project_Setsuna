@@ -1,5 +1,5 @@
 # Project_Setsuna
-Bot para o Discord criado utilizando a linguagem Python e uma série de bibliotecas da liguagem.
+Bot para o Discord criado utilizando unicamente a linguagem Python.
 <br>
 <br>
 <br>
